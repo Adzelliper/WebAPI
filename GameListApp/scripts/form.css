@@ -1,16 +1,15 @@
 form{
-    width: 400px;
-    margin: 0 auto 0 auto;
-    color: blue;
-    border: 1px solid blue;
+    width:400px;
+    margin:0 auto 0 auto;
+    color:blueviolet;
+    border:1px solid magenta;
     border-radius: 10px;
-    padding: 0 40px 20px 40px;
-font-family: Helvetica, sans-serif;
+    padding:20px 40px 20px 40px;
+    font-family:Arial, Helvetica, sans-serif 
 }
-
 button{
     margin-top: 10px;
 }
 input{
-    width: 100%;
+    width:100%;
 }
