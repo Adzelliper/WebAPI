@@ -50,7 +50,7 @@ router.post('/register', function(req, res){
                     bcyrpt.hash(newUser.password, salt, function(err, hash){
                         if(err)throw err;
                         newUser.password = hash;
-                        new User(newUser).save()
+                        newUser.save()
                         .then(function(user){
                             //flash message that user registered
                             res.redirect('/login');

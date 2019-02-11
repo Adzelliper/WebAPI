@@ -44,7 +44,7 @@ app.use(bodyParser.json());
 
 // Setup Express Session
 app.use(session({
-    secret:"secret",
+    secret:'secret',
     resave:true,
     saveUninitialized:true
 }));
@@ -116,10 +116,10 @@ router.post('/login', function(req, res, next){
     })(req,res,next);
 });
 
-app.get('/',ensureAuthenticated, function(req,res){
+app.get('/', ensureAuthenticated,function(req,res){
     console.log("Request made from fetch");
-    Entry.find({}).
-    then(function(entries){
+    Entry.find({})
+    .then(function(entries){
         res.render("index", {
             entries:entries
         })
