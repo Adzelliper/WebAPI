@@ -1,0 +1,34 @@
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <div class="card card-body">
+            <form class="form-group" action="/addgame" method="POST">
+                <h3>Enter Bug:</h3>
+                <label>Bug ID</label>
+                <br>
+                <input type="text" name="title" required>
+                <br>
+                <label>Bug Type</label>
+                <br>
+                <input type="text" name="typeOfBug" required>
+                <br>
+                <label>Status</label>
+                <br>
+                <input type="text" name="status" required>
+                <br>
+                <label>Priority</label>
+                <br>
+                <input type="text" name="priority" required>
+                <br>
+                <label>Founder</label>
+                <br>
+                <input type="text" name="founder" required>
+                <br>
+                <label>Description</label>
+                <br>
+                <textarea name="description" class="form-control" required></textarea>
+                <br>
+                <button type="submit" class="btn btn-primary">Submit Bug</button>
+            </form>
+        </div>
+    </div>
+</div>

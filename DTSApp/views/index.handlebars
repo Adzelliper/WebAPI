@@ -1,0 +1,24 @@
+
+<div class="jumbotron text-center">
+    <h1 class="text-center">Defect Tracking System</h1>
+    <p>These are the current bugs/defects</p>
+    {{#each entries }}
+        <div class='entries'>
+            <p class="font-weight-bold">Bug: {{title}}</p>
+            <p>Type: {{typeOfBug}}</p>
+            <p>Status: {{status}}</p>
+            <p>Priority: {{priority}}</p>
+            <p>Founder: {{founder}}</p>
+            <p>Assigned To: {{assignedTo}}</p>
+            <p>Description: {{description}}</p>
+            <p>Date: {{date}}</p>
+            <a href='/defects/editgame/{{id}}' class="btn btn-dark mb-3">Edit</a>
+            <form method="POST" action="/{{id}}?_method=Delete">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="submit" value="Delete" class="btn btn-danger">
+            </form>
+        </div>
+        <br>
+    {{else}}
+    {{/each}}
+</div>

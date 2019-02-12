@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <div class="card card-body">
+            <form class="form-group" action="/editgame/{{entry.id}}?_method=PUT" method="POST">
+                <h3>Enter Your Game Here:</h3>
+                <label>Edit Title of Game</label>
+                <input type="hidden" name="_method" value="PUT">
+                <br>
+                <input type="text" name="title" value="{{entry.title}}" required>
+                <br>
+                <label>Edit Status</label>
+                <br>
+                <input type="text" name="status" value="{{entry.status}}" required>
+                <br>
+                <label>Edit Assigned To</label>
+                <br>
+                <input type="text" name="assignedTo" value="{{entry.assignedTo}}" required>
+                <br>
+                <label>Edit Description of Game</label>
+                <br>
+                <textarea name="description" class="form-control" required>{{entry.description}}</textarea>
+                <br>
+                <button type="submit" class="btn btn-primary">Update Bug</button>
+            </form>
+        </div>
+    </div>
+</div>
