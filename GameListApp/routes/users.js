@@ -37,7 +37,7 @@ router.post('/register', function(req, res){
         .then(function(user){
             if(user){
                 //add flash message that user exists
-                res.redirect("/users/login");
+                res.redirect("/login");
             }
             else{
                 var newUser = new User({

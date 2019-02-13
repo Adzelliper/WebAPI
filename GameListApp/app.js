@@ -31,7 +31,10 @@ mongoose.connect("mongodb://localhost:27017/gameentries", {
 });
 
 require('./models/Entry');
+require('./models/Users');
 var Entry = mongoose.model('Entries');
+var Users = mongoose.model('Users');
+
 
 app.engine('handlebars', exphbs({
     defaultLayout:'main'
@@ -76,7 +79,9 @@ router.get('/', ensureAuthenticated, function(req, res){
 
 //Route to entries
 router.get('/entries', ensureAuthenticated,function(req, res){
-    res.render('gameentries/addgame');
+    res.render('gameentries/addgame',{
+        user:req.user
+    });
 });
 
 
@@ -85,7 +90,10 @@ router.get('/gameentries/editgame/:id', function(req,res){
     Entry.findOne({
         _id:req.params.id
     }).then(function(entry){
-        res.render('gameentries/editgame', {entry:entry});
+        res.render('gameentries/editgame', {
+            user:req.user, 
+            entry:entry
+        });
     });
 });
 
@@ -116,12 +124,30 @@ router.post('/login', function(req, res, next){
     })(req,res,next);
 });
 
+router.get('/logout', function(req, res){
+    req.logout();
+    res.redirect('/login');
+});
+
+//index route
 app.get('/', ensureAuthenticated,function(req,res){
     console.log("Request made from fetch");
     Entry.find({})
     .then(function(entries){
         res.render("index", {
+            user:req.user.id,
             entries:entries
+        })
+    });
+});
+
+//gamers route
+app.get('/gamers', function(req,res){
+    console.log("Request made from fetch");
+    Users.find()
+    .then(function(users){
+        res.render("gamers", {
+            users:users
         })
     });
 });
@@ -138,6 +164,7 @@ app.post('/addgame', function(req,res){
     console.log(req.body);
     var newEntry = {
         title:req.body.title,
+        user:req.user.id,
         genre:req.body.genre
     }
 
